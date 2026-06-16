@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
 <title>SD Foods – Operations Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -2585,6 +2586,11 @@ function downloadSupplierPDF(){
     SD Foods Stock Report · ${s.name} · Generated ${new Date().toLocaleString("en-GB")} · 4 Rue des Ecricrolles, 95410 Groslay
   </div>
   <scr'+'ipt>window.onload=()=>{window.print();}<\/script>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
   </body></html>`;
 
   const w=window.open(URL.createObjectURL(new Blob([html],{type:"text/html"})),"_blank");
